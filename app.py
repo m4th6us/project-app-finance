@@ -3,6 +3,31 @@ from database import get_account_id, get_user_id, list_account, list_users
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+
+    data = [
+        {
+        "connection": "ok",
+        "routes": {
+            "user_routes": {
+                "/user/id_user": "get users by id",
+                "method": "GET",
+                "/list_users": "get all user",
+                "method": "GET"
+            },
+            "accounts_routes": {
+                "/accounts/id_account": "get accounts by id",
+                "method": "GET",
+                "/list_accounts": "get all accounts",
+                "method": "GET"
+            }
+        }
+    }
+    ]
+
+    return data
+
 @app.route("/user/<int:id_user>")
 def get_users(id_user):
 
