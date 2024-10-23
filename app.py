@@ -38,21 +38,18 @@ def get_users(id_user):
 def get_accounts(id_account):
 
     data = get_account_id(id_account)
-    print(data)
     return {"connection": "ok", "data": data}
 
 @app.route("/list_users")
-def get_users_list():  # Renomeada para evitar conflito com a rota
+def get_users_list():
 
     data = list_users()
-    print(data)
     return {"connection": "ok", "data": data}
 
 @app.route("/list_accounts")
 def get_account_list():
 
     data = list_account()
-    print(data)
     return {"connection": "ok", "data": data}
 
 app.run()
