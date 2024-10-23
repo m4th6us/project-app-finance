@@ -1,25 +1,20 @@
-import mysql.connector 
-from mysql.connector import errorcode
+import logging
+import sqlite3
 
 
 def connection():
 
     try:
-        connect = mysql.connector.connect(host='localhost', user='root', password='', database='app_finance')
-        print("Conectou")
+        connect = sqlite3.connect(database='app_finance.db')
+        logging.info("Conectou")
 
         cursor = connect.cursor()
 
         return connect, cursor
     
-    except mysql.connector.Error as error:
+    except sqlite3.Error as error:
 
-        if error.errno == errorcode.ER_BAD_DB_ERROR:
-            print("Database não existe")
-        elif error.errno == errorcode.          ER_ACCESS_DENIED_ERROR:
-            print("User name or password is wrong")
-        else:
-            print(error)
+        logging.error(error)
 
 def get_user_id(id_user):
 
